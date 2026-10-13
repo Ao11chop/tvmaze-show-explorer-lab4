@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 favorites.json
 favorites.json.tmp
+favorites.json.*.tmp

@@ -35,8 +35,11 @@ No API key is required.
   missing fields, strip summary HTML, and sort unknown episode numbers after
   known numbers. Tests cover null metadata, HTML entities, empty guides,
   ordering, and filters without modifying the original download.
-- **Open — favorite persistence:** a damaged or unwritable favorites file must
-  leave browsing available and must not silently overwrite existing data.
+- **Resolved — favorite persistence:** loading a damaged or unreadable file
+  disables saves with a warning. Saves write a temporary file and replace the
+  destination only after writing succeeds. IDs prevent duplicates. Tests
+  verify reloads, corruption, permission errors, and preservation of the
+  previous file and in-memory list after a failed save.
 - **Open — request reuse:** navigation and season filters must not trigger
   undocumented endpoints or redundant profile requests.
 
