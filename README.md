@@ -31,8 +31,10 @@ No API key is required.
   or HTTP date `Retry-After`. Network failures and 5xx wait one second. Other
   errors, invalid JSON, and invalid data shapes do not retry. Offline tests
   check the request count and delay without sleeping or contacting TVmaze.
-- **Open — incomplete metadata:** dates, ratings, and episode numbers can be
-  missing. Display `Unknown` and sort without comparing `None` with integers.
+- **Resolved — incomplete metadata:** display functions use `Unknown` for
+  missing fields, strip summary HTML, and sort unknown episode numbers after
+  known numbers. Tests cover null metadata, HTML entities, empty guides,
+  ordering, and filters without modifying the original download.
 - **Open — favorite persistence:** a damaged or unwritable favorites file must
   leave browsing available and must not silently overwrite existing data.
 - **Open — request reuse:** navigation and season filters must not trigger
