@@ -40,8 +40,10 @@ No API key is required.
   destination only after writing succeeds. IDs prevent duplicates. Tests
   verify reloads, corruption, permission errors, and preservation of the
   previous file and in-memory list after a failed save.
-- **Open — request reuse:** navigation and season filters must not trigger
-  undocumented endpoints or redundant profile requests.
+- **Resolved — request reuse:** the browsing menu receives downloaded data
+  rather than an HTTP client. Filters, favorite saves, and favorite listing
+  cannot make API calls. Integration tests verify one search and one episode
+  request across repeated filters and saves; B reuses matches for reselection.
 
 ## Data source
 
