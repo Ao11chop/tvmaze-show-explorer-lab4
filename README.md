@@ -26,8 +26,11 @@ No API key is required.
 
 ## Issues
 
-- **Open — transient failures:** implement at most two attempts, including
-  HTTP 429 with `Retry-After`, while avoiding retries for other client errors.
+- **Resolved — transient failures:** the shared HTTP handler uses at most two
+  attempts. HTTP 429 waits at least three seconds and honors a longer numeric
+  or HTTP date `Retry-After`. Network failures and 5xx wait one second. Other
+  errors, invalid JSON, and invalid data shapes do not retry. Offline tests
+  check the request count and delay without sleeping or contacting TVmaze.
 - **Open — incomplete metadata:** dates, ratings, and episode numbers can be
   missing. Display `Unknown` and sort without comparing `None` with integers.
 - **Open — favorite persistence:** a damaged or unwritable favorites file must
